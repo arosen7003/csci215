@@ -1,0 +1,44 @@
+<!-- Name: Audrey Rosen
+    <ClassRank>
+    // Certification of Authenticity:
+    // I certify that this program is entirely my own work.
+    // Input: User will input the amount of credits they have earned
+    // Output: The output will be the class rank that matches with the credit hours provided by the user
+    // Purpose: This program will provide the user with their earned class rank based off their credit hour input. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hw3.css">
+    <title>Class Rank</title>
+</head>
+<body>
+    <div id="wrapper">
+    <h2> What's Your Class Rank?</h2>
+    <div>
+        <label for="creditInput">Please enter your acquired credit hours:</label>
+        <input type="text" id="creditInput">
+        <button onclick="getClassRank()">Submit</button>
+      </div>
+    <div id="outputRank">
+    </div>
+    <script>
+        function getClassRank() {
+            const creditHours = parseInt(document.getElementById('creditInput').value);
+            let classRank;
+            if (creditHours < 30) {
+                classRank = "Freshman";
+            } else if (creditHours < 60) {
+                classRank = "Sophomore";
+            } else if (creditHours < 90) {
+                classRank = "Junior";
+            } else {
+                classRank = "Senior";
+            }
+            document.getElementById('outputRank').innerHTML = `<p>Your class rank is: ${classRank}</p>`;
+        }
+        </script>
+    </div>
+</body>
+</html>
