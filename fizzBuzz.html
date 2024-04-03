@@ -1,0 +1,48 @@
+<!-- Name: Audrey Rosen
+    <ClassRank>
+    // Certification of Authenticity:
+    // I certify that this program is entirely my own work.
+    // Input: User will enter a number between 20 & 50
+    // Output: The output will be whether the number is divisible by 3, 5, both, or neither by using the words 'Fizz', 'Buzz', and 'FizzBuzz.
+    // Purpose: This is a math program that tells the user if a number is divisible by 3, 5, bth, or neither. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="hw3.css">
+    <title>FizzBuzz</title>
+</head>
+<body>
+    <div id="wrapper">
+    <h2> Fizzbuzz Mayhem</h2>
+    <div>
+        <label for="numberInput">Please enter a number between 20 & 50:</label>
+        <input type="text" id="numberInput">
+        <button onclick="getFizzBuzz()">Submit</button>
+      </div>
+      <script>
+        function getFizzBuzz() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            let fizzBuzz;
+        if (number < 20) {
+            fizzBuzz = "This number is less than 20.";
+        } else if (number > 50) {
+            fizzBuzz = "This number is greater than 50";
+        } else if (number % 3 === 0 && number % 5 === 0) {
+            fizzBuzz = "FizzBuzz";
+        } else if (number % 3 === 0) {
+            fizzBuzz = "Fizz";
+        } else if (number % 5 === 0) {
+            fizzBuzz = "Buzz";
+        } else {
+            fizzBuzz = "This number is not divisible by 3 or 5";
+        }
+            document.getElementById('outputFizzBuzz').innerHTML = `<p>Your FizzBuzz result is: ${fizzBuzz}</p>`;
+        }
+        </script>
+        <div id="outputFizzBuzz">
+        </div>
+</div>
+</body>
+</html> 
