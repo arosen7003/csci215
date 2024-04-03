@@ -1,0 +1,56 @@
+<!-- Name: Audrey Rosen
+    <ClassRank>
+    // Certification of Authenticity:
+    // I certify that this program is entirely my own work.
+    // Input: There is no user input, but the user can click on the buttons to draw different shapes of triangles.
+    // Output: The output could be either an isoceles triangle or an obtuse triangle, depending on the button clicked.
+    // Purpose: This is a webpage with buttons that draws different shape of triangles using nested loop. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="hw3.css">
+    <title>Triangle Maker</title>
+</head>
+<body>
+    <div id="wrapper">
+    <h2>Draw Triangle with Button</h2>
+    <div>
+        <button onclick="drawObtuseTriangle(10)">Draw Obtuse Triangle</button>
+        <button onclick="drawIsosocelesTriangle(10)">Draw Isosceles Triangle</button>
+        <button onclick="eraseTriangle()">Erase Triangle</button>
+        <div id="triangleContainer"></div>
+    </div>
+    <script>
+
+        function drawObtuseTriangle(size) {
+            let triangle = '';
+            for (let i = 1; i <= size; i++) {
+                for (let j = 1; j <= i; j++) {
+                    triangle += '*';
+                }
+                triangle += '<br>';
+            }
+            document.getElementById('triangleContainer').innerHTML = triangle;
+        }
+        function drawIsosocelesTriangle(size) {
+            let triangle = '';
+            for (let i = 1; i <= size; i++) {
+                for (let j = 1; j <= size - i; j++) {
+                    triangle += '&nbsp;';
+                }
+                for (let k = 1; k <= 2 * i - 1; k++) {
+                    triangle += '*';
+                }
+                triangle += '<br>';
+            }
+            document.getElementById('triangleContainer').innerHTML = triangle;
+        }
+        function eraseTriangle() {
+            document.getElementById('triangleContainer').innerHTML = '';
+        }
+    </script>
+    </div>
+</body>
+</html>
