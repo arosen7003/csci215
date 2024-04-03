@@ -1,0 +1,66 @@
+# csci215
+<!-- Name: Audrey Rosen
+    <ClassRank>
+    // Certification of Authenticity:
+    // I certify that this program is entirely my own work.
+    // Input: User will enter their weight in kilograms, height in centimeters, and select their gender from a dropdown menu.
+    // Output: The program will output the user's BMI, BMI category, and estimated life expectancy based on the provided data
+    // Purpose: This program is meant to show BMI data catered to the user's information. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="hw3.css">
+    <title>BMI Index</title>
+</head>
+<body>
+    <div id="wrapper">
+    <h2>BMI Index Evaluator</h2>
+    <div>
+        <label for="weightInput">Please enter your weight in kilograms:</label>
+        <input type="text" id="weightInput">
+        <label for="heightInput">Please enter your height in centimeters:</label>
+        <input type="text" id="heightInput">
+        <label for="genderInput">Please select your gender:</label>
+        <select id="genderInput">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="nonBinary">Non-Binary</option>
+            <option value="preferNotToSay">Prefer Not to Say</option>
+        </select>
+        <button onclick="getBMI()">Submit</button>
+    </div>
+    <div id="outputBMI"></div>
+    <script>
+        function getBMI() {
+            const weight = parseFloat(document.getElementById('weightInput').value);
+            const height = parseFloat(document.getElementById('heightInput').value);
+            const gender = document.getElementById('genderInput').value;
+
+            if (isNaN(weight) || isNaN(height) || weight < 0 || height < 0 || weight > 300 || height > 300) {
+                document.getElementById('outputBMI').innerHTML = '<p>Please enter valid weight and height values.</p>';
+                return;
+            }
+            const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+            let bmiCategory;
+            if (bmi > 25) {
+                bmiCategory = "Overweight";
+            } else if (bmi =>25) {
+                bmiCategory = "Normal Weight";
+            }
+            let lifeExpectancy;
+            if (gender === 'male') {
+                lifeExpectancy = bmiCategory === 'Overweight' ? 77.3 : 79.4;
+            } else if (gender === 'female') {
+                lifeExpectancy = bmiCategory === 'Overweight' ? 81.4 : 83.5;
+        // For nonBinary and preferNotToSay, use male statistics
+            } else { 
+                lifeExpectancy = bmiCategory === 'Overweight' ? 77.3 : 79.4;
+            }
+            document.getElementById('outputBMI').innerHTML = `<p>Your BMI is: ${bmi}. BMI Category: ${bmiCategory}. Estimated Life Expectancy: ${lifeExpectancy} years.</p>`;
+        }
+    </script>
+    </div>
+</body>
+</html>
